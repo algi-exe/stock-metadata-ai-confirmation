@@ -1,10 +1,12 @@
-Deno.serve((_req) => {
-  const html = `<!DOCTYPE html>
+<!DOCTYPE html>
+
 <html lang="id">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Verifikasi Sukses - Stock Metadata AI</title>
+  <meta name="theme-color" content="#0f172a">
+  <title>Verifikasi Sukses — Stock Metadata AI</title>
+
   <style>
     * {
       box-sizing: border-box;
@@ -14,166 +16,234 @@ Deno.serve((_req) => {
       margin: 0;
       min-height: 100vh;
       font-family: Arial, Helvetica, sans-serif;
-      background: #f4f7fb;
-      color: #172033;
+      background:
+        radial-gradient(circle at top, #e2e8f0 0%, #f8fafc 45%, #ffffff 100%);
+      color: #0f172a;
       display: flex;
-      justify-content: center;
       align-items: center;
+      justify-content: center;
       padding: 24px;
     }
 
-    .card {
+    .container {
       width: 100%;
-      max-width: 620px;
+      max-width: 560px;
+    }
+
+    .card {
       background: #ffffff;
-      border-radius: 20px;
-      padding: 42px 32px;
+      border-radius: 24px;
+      padding: 40px 32px 30px;
+      box-shadow:
+        0 20px 60px rgba(15, 23, 42, 0.12),
+        0 4px 16px rgba(15, 23, 42, 0.06);
       text-align: center;
-      box-shadow: 0 12px 40px rgba(0, 0, 0, 0.08);
+      border: 1px solid #e2e8f0;
     }
 
     .logo {
-      width: 76px;
-      height: 76px;
-      margin: 0 auto 24px;
-      border-radius: 18px;
-      background: #111827;
+      width: 72px;
+      height: 72px;
+      margin: 0 auto 22px;
+      border-radius: 20px;
+      background: #0f172a;
       color: #ffffff;
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 21px;
-      font-weight: 700;
+      font-size: 22px;
+      font-weight: 800;
       letter-spacing: 1px;
     }
 
-    .success {
+    .success-icon {
+      width: 74px;
+      height: 74px;
+      margin: 0 auto 20px;
+      border-radius: 50%;
+      background: #dcfce7;
       color: #16a34a;
-      font-size: 46px;
-      line-height: 1;
-      margin-bottom: 18px;
-    }
-
-    h1 {
-      margin: 0 0 14px;
-      font-size: 30px;
-    }
-
-    .message {
-      margin: 0 auto 28px;
-      max-width: 500px;
-      line-height: 1.7;
-      color: #4b5563;
-      font-size: 16px;
-    }
-
-    .section {
-      margin-top: 22px;
-      padding: 22px;
-      border-radius: 14px;
-      background: #f8fafc;
-      text-align: left;
-    }
-
-    .section h2 {
-      margin: 0 0 10px;
-      font-size: 19px;
-    }
-
-    .section p {
-      margin: 8px 0;
-      line-height: 1.6;
-      color: #4b5563;
-    }
-
-    .trial {
-      border: 1px solid #dbeafe;
-      background: #eff6ff;
-    }
-
-    .whatsapp {
-      display: inline-block;
-      margin-top: 12px;
-      padding: 13px 22px;
-      border-radius: 10px;
-      background: #16a34a;
-      color: #ffffff;
-      text-decoration: none;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 42px;
       font-weight: 700;
     }
 
-    .footer {
+    h1 {
+      margin: 0;
+      font-size: 30px;
+      line-height: 1.2;
+      font-weight: 800;
+      color: #0f172a;
+    }
+
+    .subtitle {
+      margin: 14px auto 30px;
+      max-width: 440px;
+      font-size: 16px;
+      line-height: 1.65;
+      color: #64748b;
+    }
+
+    .section {
+      text-align: left;
+      padding: 20px;
+      margin-top: 14px;
+      border-radius: 16px;
+      background: #f8fafc;
+      border: 1px solid #e2e8f0;
+    }
+
+    .section h2 {
+      margin: 0 0 9px;
+      font-size: 17px;
+      line-height: 1.4;
+      color: #0f172a;
+    }
+
+    .section p {
+      margin: 0;
+      font-size: 14px;
+      line-height: 1.65;
+      color: #64748b;
+    }
+
+    .trial {
+      background: #f0fdf4;
+      border-color: #bbf7d0;
+    }
+
+    .trial h2 {
+      color: #15803d;
+    }
+
+    .payment {
+      background: #f8fafc;
+    }
+
+    .whatsapp {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      width: 100%;
+      margin-top: 24px;
+      padding: 15px 20px;
+      border-radius: 14px;
+      background: #16a34a;
+      color: #ffffff;
+      text-decoration: none;
+      font-size: 16px;
+      font-weight: 700;
+      transition: transform 0.15s ease, background 0.15s ease;
+    }
+
+    .whatsapp:hover {
+      background: #15803d;
+      transform: translateY(-1px);
+    }
+
+    .whatsapp-icon {
+      font-size: 20px;
+    }
+
+    .phone {
+      margin-top: 12px;
+      font-size: 14px;
+      font-weight: 700;
+      color: #475569;
+    }
+
+    footer {
       margin-top: 28px;
-      color: #9ca3af;
-      font-size: 13px;
+      padding-top: 20px;
+      border-top: 1px solid #e2e8f0;
+      font-size: 12px;
+      line-height: 1.5;
+      color: #94a3b8;
     }
 
     @media (max-width: 480px) {
+      body {
+        padding: 14px;
+      }
+
       .card {
-        padding: 32px 20px;
+        padding: 30px 20px 24px;
+        border-radius: 20px;
       }
 
       h1 {
-        font-size: 25px;
+        font-size: 26px;
+      }
+
+      .subtitle {
+        font-size: 15px;
+      }
+
+      .section {
+        padding: 17px;
       }
     }
   </style>
+
 </head>
 
 <body>
-  <main class="card">
-    <div class="logo">SMAI</div>
+  <main class="container">
+    <section class="card">
 
-    <div class="success">✓</div>
+```
+  <div class="logo">SMAI</div>
 
-    <h1>Verifikasi Sukses</h1>
+  <div class="success-icon">✓</div>
 
-    <p class="message">
-      Email Anda berhasil diverifikasi.
-      Akun Stock Metadata AI Anda sekarang telah dikonfirmasi.
+  <h1>Verifikasi Sukses</h1>
+
+  <p class="subtitle">
+    Email Anda berhasil diverifikasi.
+    Akun Stock Metadata AI Anda sekarang telah dikonfirmasi.
+  </p>
+
+  <div class="section trial">
+    <h2>🎁 Trial 1 Hari</h2>
+    <p>
+      Setelah email berhasil diverifikasi, Anda dapat menghubungi
+      admin untuk mendapatkan aktivasi trial selama 1 hari.
     </p>
+  </div>
 
-    <div class="section trial">
-      <h2>🎁 Trial 1 Hari</h2>
-      <p>
-        Setelah email berhasil diverifikasi, Anda dapat menghubungi
-        admin untuk mendapatkan aktivasi trial 1 hari.
-      </p>
-    </div>
+  <div class="section payment">
+    <h2>💳 Aktivasi &amp; Pembayaran</h2>
+    <p>
+      Untuk aktivasi berbayar, silakan hubungi admin melalui WhatsApp.
+      Admin akan memberikan informasi pembayaran dan mengaktifkan
+      akun Anda.
+    </p>
+  </div>
 
-    <div class="section">
-      <h2>💳 Aktivasi & Pembayaran</h2>
-      <p>
-        Untuk aktivasi berbayar, silakan hubungi admin melalui WhatsApp.
-        Admin akan memberikan informasi pembayaran dan mengaktifkan akun Anda.
-      </p>
+  <a
+    class="whatsapp"
+    href="https://wa.me/62858786363667"
+    target="_blank"
+    rel="noopener noreferrer"
+  >
+    <span class="whatsapp-icon">💬</span>
+    <span>Hubungi Admin WhatsApp</span>
+  </a>
 
-      <a
-        class="whatsapp"
-        href="https://wa.me/62858786363667"
-        target="_blank"
-        rel="noopener noreferrer"
-      >
-        Hubungi Admin WhatsApp
-      </a>
+  <div class="phone">
+    WhatsApp: 085878636667
+  </div>
 
-      <p>
-        WhatsApp: <strong>085878636667</strong>
-      </p>
-    </div>
+  <footer>
+    © 2026 Stock Metadata AI. All rights reserved.
+  </footer>
 
-    <div class="footer">
-      © 2026 Stock Metadata AI. All rights reserved.
-    </div>
+</section>
+```
+
   </main>
 </body>
-</html>`;
-
-  return new Response(html, {
-    status: 200,
-    headers: {
-      "Content-Type": "text/html; charset=UTF-8",
-      "Cache-Control": "no-cache",
-    },
-  });
-});
+</html>
